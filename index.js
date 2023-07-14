@@ -95,7 +95,7 @@ const downloadPhoto = async (page, overwrite = false) => {
 
   const download = await downloadPromise
   const temp = await download.path()
-  const fileName = await download.suggestedFilename()
+  const fileName = await download.suggestedFilename().slice(0, 69); // ADDED: .slice(0, 69) to limit filename length 
 
   const metadata = await exiftool.read(temp)
 
